@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">notification shade</string>
+    <string name="api_not_found">could not find notification shade</string>
+    <string name="api_failed">failed to open notification shade</string>
+</resources>
