@@ -25,9 +25,13 @@ android {
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
         debug {
+            applicationIdSuffix = ".debug"
+            versionNameSuffix = "-${gitVersion()}"
+        }
+        create("unsigned") {
             isMinifyEnabled = true
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
-            applicationIdSuffix = ".debug"
+            applicationIdSuffix = ".unsigned"
             versionNameSuffix = "-${gitVersion()}"
         }
     }
