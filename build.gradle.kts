@@ -28,6 +28,11 @@ android {
                 keyPassword = System.getenv("ANDROID_KEY_PASSWORD")
                 storeFile = System.getenv("ANDROID_STORE_FILE")?.let(::file)
                 storePassword = System.getenv("ANDROID_STORE_PASSWORD")
+
+                enableV1Signing = true
+                enableV2Signing = true
+                enableV3Signing = true
+                enableV4Signing = true
             }
         }
         debug {
