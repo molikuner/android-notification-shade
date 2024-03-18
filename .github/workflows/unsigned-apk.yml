@@ -1,0 +1,27 @@
+name: Unsigned APK
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: set up JDK 21
+      uses: actions/setup-java@v3
+      with:
+        java-version: '21'
+        distribution: 'temurin'
+        cache: gradle
+    - name: assemble unsigned APK
+      run: ./gradlew assembleUnsigned
+    - name: upload artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: unsigned-apk
+        path: build/outputs/apk/unsigned
+        compression-level: 0 # the APK is already compressed...
