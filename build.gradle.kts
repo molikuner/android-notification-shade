@@ -23,6 +23,12 @@ android {
         release {
             isMinifyEnabled = true
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            signingConfig = signingConfigs.create("release") {
+                keyAlias = System.getenv("ANDROID_KEY_ALIAS")
+                keyPassword = System.getenv("ANDROID_KEY_PASSWORD")
+                storeFile = System.getenv("ANDROID_STORE_FILE")?.let(::file)
+                storePassword = System.getenv("ANDROID_STORE_PASSWORD")
+            }
         }
         debug {
             applicationIdSuffix = ".debug"
